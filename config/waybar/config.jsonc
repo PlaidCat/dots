@@ -1,0 +1,102 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passtrough": false,
+    "gtk-layer-shell": true,
+    "height": 0,
+    "modules-left": [
+      "wlr/workspaces",
+      "custom/kernel",
+      "custom/updates",
+      "cpu",
+      "memory",
+      "disk"
+   ],
+    "modules-center": [],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "clock"
+    ],
+
+    "hyprland/window": {
+        "format": "{}"
+    },
+    "wlr/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "all-outputs": true,
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "active": "",
+            "default": ""
+          }
+    },
+    "cpu": {
+      "interval": 5,
+      "format": " {usage}%",
+      "max-length": 10,
+      "on-click": ""
+    },
+    "memory": {
+      "interval": 30,
+      "format": " {}%",
+      "max-length": 10
+    },
+    "disk": {
+      "format": " {percentage_used}% ({free})",
+      "tooltip": true,
+      "interval": 60
+    },
+    "custom/updates": {
+        "format": "{}",
+        "exec": "~/.scripts/updates",
+        "interval": 600,
+        "tooltip": true
+    },
+    "tray": {
+        "icon-size": 13,
+        "tooltip": false,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{: %R   %Y/%m/%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "tooltip": false,
+        "format-muted": " Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "tooltip": false,
+        "format-source": " {volume}%",
+        "format-source-muted": " Muted"
+    },
+    "custom/kernel": {
+      "exec": "uname -r | cut -d '-' -f1",
+      "interval": "once",
+      "format": "<span color=\"#7aa2f7\"> </span>{}"
+    }
+}
+
